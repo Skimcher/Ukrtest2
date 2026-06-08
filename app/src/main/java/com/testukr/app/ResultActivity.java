@@ -13,13 +13,14 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         int score = getIntent().getIntExtra("score", 0);
+        int total = getIntent().getIntExtra("total", 12);
 
         TextView tvResult = findViewById(R.id.tvResult);
-        tvResult.setText("ВИ НАБРАЛИ\n" + score + " БАЛІВ");
+        tvResult.setText("ВИ НАБРАЛИ\n" + score + " З " + total + "\nБАЛІВ");
 
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(this, StartActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
