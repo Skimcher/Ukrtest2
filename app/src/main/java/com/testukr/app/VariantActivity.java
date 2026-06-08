@@ -10,18 +10,68 @@ public class VariantActivity extends AppCompatActivity {
 
     int currentQuestion = 0;
     int score = 0;
-    int variantNum = 1;
+    final int TOTAL = 12;
 
-    String[][] questions;
-    int[] correct;
+    String[][] questions = {
+        {
+            "У якому слові спрощення НЕ відбувається ні на письмі, ні у вимові?",
+            "Чесний", "Тиснути", "Хворостняк", "Обласний"
+        },
+        {
+            "Який іменник у родовому відмінку має закінчення -у?",
+            "Клен", "Париж", "Папір", "Документ"
+        },
+        {
+            "Оберіть правильний варіант написання слова з пів-:",
+            "Пів-Києва", "Пів яблука", "Пів аркуша", "Півострів"
+        },
+        {
+            "Визначте тип підмета: «Чумацький Шлях освічував нічну дорогу»",
+            "Простий", "Складений", "Неозначений", "Узагальнений"
+        },
+        {
+            "У якому прикметнику пишеться подвоєна літера НН?",
+            "Глиняний", "Священний", "Лебединий", "Шалений"
+        },
+        {
+            "З яким іменником числівник «два» узгоджується у формі множини?",
+            "Професори", "Кілограм", "Будинок", "Студент"
+        },
+        {
+            "Яке словосполучення є калькою з російської і вважається помилкою?",
+            "Брати участь", "Здати іспит", "Приймати міри", "Протягом року"
+        },
+        {
+            "Після якого префікса перед я, ю, є, ї пишеться апостроф?",
+            "На-", "З-", "При-", "За-"
+        },
+        {
+            "Яким засобом поєднані частини: «Я знаю, що сонце встане»?",
+            "Сполучник сурядності", "Сполучник підрядності",
+            "Сполучне слово (займенник)", "Сполучне слово (прислівник)"
+        },
+        {
+            "До якої дієвідміни належить дієслово «бачити»?",
+            "Перша дієвідміна", "Друга дієвідміна",
+            "Мішана дієвідміна", "Особлива група"
+        },
+        {
+            "Яке з цих слів пишеться через дефіс?",
+            "Лісостеп", "Кінотеатр", "Віце-президент", "Жовтогарячий"
+        },
+        {
+            "Для якого стилю характерні кліше, штампи, канцеляризми?",
+            "Публіцистичний", "Офіційно-діловий", "Художній", "Науковий"
+        }
+    };
+
+    int[] correct = {2, 2, 2, 1, 1, 0, 2, 1, 1, 1, 2, 1};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_variant);
 
-        variantNum = getIntent().getIntExtra("variant", 1);
-        loadQuestions(variantNum);
         showQuestion();
 
         Button b1 = findViewById(R.id.btnAns1);
@@ -35,87 +85,6 @@ public class VariantActivity extends AppCompatActivity {
         b4.setOnClickListener(v -> checkAnswer(3));
     }
 
-    void loadQuestions(int variant) {
-        if (variant == 1) {
-            questions = new String[][]{
-                {
-                    "Яке слово пишеться з великої літери?",
-                    "місто", "київ", "книга", "школа"
-                },
-                {
-                    "Скільки літер в українському алфавіті?",
-                    "30", "32", "33", "28"
-                },
-                {
-                    "Як правильно написати слово?",
-                    "сонце", "сонцє", "сонсе", "санце"
-                },
-                {
-                    "Яке слово є іменником?",
-                    "бігти", "червоний", "небо", "швидко"
-                },
-                {
-                    "Як правильно написати слово?",
-                    "молоко", "молако", "малако", "молако"
-                }
-            };
-            correct = new int[]{1, 2, 0, 2, 0};
-
-        } else if (variant == 2) {
-            questions = new String[][]{
-                {
-                    "Яке речення написано правильно?",
-                    "Я іду у школа.",
-                    "Я іду до школи.",
-                    "Я іду в школи.",
-                    "Я іду школи."
-                },
-                {
-                    "Знайди слово з апострофом:",
-                    "память", "пять", "мяч", "м'яч"
-                },
-                {
-                    "Яке слово є дієсловом?",
-                    "стрибок", "стрибати", "стрибун", "стрибком"
-                },
-                {
-                    "Скільки голосних у слові «Україна»?",
-                    "3", "4", "5", "6"
-                },
-                {
-                    "Як правильно написати?",
-                    "пишіть", "пиштє", "пишьте", "пиштe"
-                }
-            };
-            correct = new int[]{1, 3, 1, 2, 0};
-
-        } else {
-            questions = new String[][]{
-                {
-                    "Яке слово пишеться з м'яким знаком?",
-                    "сіль", "сил", "сала", "сало"
-                },
-                {
-                    "Знайди прикметник серед слів:",
-                    "бігти", "синій", "книга", "читати"
-                },
-                {
-                    "Яке слово НЕ є назвою тварини?",
-                    "вовк", "лисиця", "дерево", "заєць"
-                },
-                {
-                    "Як правильно написати?",
-                    "щасте", "щастя", "щасьтя", "щасття"
-                },
-                {
-    "Скільки складів у слові «соняшник»?",
-    "2", "3", "4", "1"
-},
-            };
-            correct = new int[]{0, 1, 2, 1, 1};
-        }
-    }
-
     void showQuestion() {
         TextView tvTitle = findViewById(R.id.tvVariantTitle);
         TextView tvNum = findViewById(R.id.tvQuestionNum);
@@ -125,8 +94,8 @@ public class VariantActivity extends AppCompatActivity {
         Button b3 = findViewById(R.id.btnAns3);
         Button b4 = findViewById(R.id.btnAns4);
 
-        tvTitle.setText("ВАРІАНТ " + variantNum);
-        tvNum.setText("Питання " + (currentQuestion + 1) + " з 5");
+        tvTitle.setText("ТЕСТ");
+        tvNum.setText("Питання " + (currentQuestion + 1) + " з " + TOTAL);
         tvQ.setText(questions[currentQuestion][0]);
         b1.setText("1. " + questions[currentQuestion][1]);
         b2.setText("2. " + questions[currentQuestion][2]);
@@ -139,11 +108,12 @@ public class VariantActivity extends AppCompatActivity {
             score++;
         }
         currentQuestion++;
-        if (currentQuestion < 5) {
+        if (currentQuestion < TOTAL) {
             showQuestion();
         } else {
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra("score", score);
+            intent.putExtra("total", TOTAL);
             startActivity(intent);
             finish();
         }
